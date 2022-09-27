@@ -1,2 +1,2 @@
-# FlutterStuff
-Flutter stuff here. This repository will store important notes and projects developed with Flutter technology for frnndog-suav interest.
+# Flutter stuff here. 
+This repository will store important notes and projects developed with Flutter technology for frnndog-suav interest.
