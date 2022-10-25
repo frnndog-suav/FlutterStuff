@@ -7,15 +7,15 @@ class Task extends StatefulWidget {
   final String image;
   final int rate;
 
-  const Task(this.nome, this.image, this.rate, {Key? key}) : super(key: key);
+  Task(this.nome, this.image, this.rate, {Key? key}) : super(key: key);
+
+  int nivel = 0;
 
   @override
   State<Task> createState() => _TaskState();
 }
 
 class _TaskState extends State<Task> {
-  int nivel = 0;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -49,9 +49,13 @@ class _TaskState extends State<Task> {
                       child: ClipRRect(
                         borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(8)),
-                        child: Image.asset(
+                        child: Image.network(
                           widget.image,
                           fit: BoxFit.cover,
+                          errorBuilder: (BuildContext context, Object exception,
+                              StackTrace? stackTrace) {
+                            return Image.asset('assets/images/no-photos.png');
+                          },
                         ),
                       ),
                     ),
@@ -74,7 +78,7 @@ class _TaskState extends State<Task> {
                       child: ElevatedButton(
                           onPressed: () {
                             setState(() {
-                              nivel++;
+                              widget.nivel++;
                             });
                           },
                           child: Column(
@@ -97,15 +101,16 @@ class _TaskState extends State<Task> {
                       width: 200,
                       child: LinearProgressIndicator(
                         color: Colors.white,
-                        value:
-                            (widget.rate > 0) ? (nivel / widget.rate) / 10 : 1,
+                        value: (widget.rate > 0)
+                            ? (widget.nivel / widget.rate) / 10
+                            : 1,
                       ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: Text(
-                      "Nível: $nivel",
+                      "Nível: ${widget.nivel}",
                       style: const TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ),
