@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 
+// Immutable state management
+
 class RandomizerChangeNotifier extends ChangeNotifier {
   final _randomGenerator = Random();
 

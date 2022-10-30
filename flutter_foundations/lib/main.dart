@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_foundations/randomizer_change_notifier.dart';
+import 'package:flutter_foundations/randomizer_state_notifier.dart';
 import 'package:flutter_foundations/range_selector_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
